@@ -19,7 +19,7 @@ public class UserDetails {
 	@Id
 	int userId;
 	
-	@Transient
+	/*@Transient*/
 	String userName;
 	public Date getJoinedDate() {
 		return joinedDate;
@@ -62,7 +62,7 @@ public class UserDetails {
 	
 	
 	public String getUserName() {
-		return userName + " from getter.";
+		return userName;
 	}
 	
 	public void setUserName(String userName) {
