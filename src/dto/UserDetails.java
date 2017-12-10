@@ -2,6 +2,8 @@ package dto;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -21,6 +23,24 @@ public class UserDetails {
 	int userId;
 	
 	String userName;
+	
+	@Embedded
+	@AttributeOverrides({
+	@AttributeOverride(name = "street", column = @Column(name = "OFFICE_STREET_NAME")),
+	@AttributeOverride(name = "city", column = @Column(name = "OFFICE_CITY_NAME")),
+	@AttributeOverride(name = "state", column = @Column(name = "OFFICE_STATE_NAME")),
+	@AttributeOverride(name = "pincode", column = @Column(name = "OFFICE_PINCODE_NAME"))
+	})
+	private Address officeAddress;
+	
+	@Embedded
+	@AttributeOverrides({
+	@AttributeOverride(name = "street", column = @Column(name = "HOME_STREET_NAME")),
+	@AttributeOverride(name = "city", column = @Column(name = "HOME_CITY_NAME")),
+	@AttributeOverride(name = "state", column = @Column(name = "HOME_STATE_NAME")),
+	@AttributeOverride(name = "pincode", column = @Column(name = "HOME_PINCODE_NAME"))
+	})
+	private Address homeAddress;
 	
 	@Embedded
 	private Address address;
